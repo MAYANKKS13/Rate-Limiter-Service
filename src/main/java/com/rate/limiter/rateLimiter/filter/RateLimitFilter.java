@@ -19,7 +19,7 @@ public class RateLimitFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        String userId = httpRequest.getHeader("User-Id");
+        String userId = httpRequest.getHeader("User-Id-1");
         if(userId == null) {
             userId = "UNKNOWN_USER";
         }

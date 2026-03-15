@@ -1,6 +1,13 @@
 package com.rate.limiter.rateLimiter.constant;
 
+import lombok.Getter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ConfigurationProperties(prefix = "ratelimiter")
+@Getter
 public class RLSConstants {
-    public static final int DEFAULT_RATE_LIMIT = 5;
-    public static final int DEFAULT_TIME_WINDOW_SECONDS = 60;
+    private int maxRequests;
+    private int windowSeconds;
 }

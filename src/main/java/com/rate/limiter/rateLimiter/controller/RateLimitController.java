@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RateLimitController {
 
-    @GetMapping("/test")
+    @GetMapping("/rateLimit")
     public String test() {
         return "API Success";
     }

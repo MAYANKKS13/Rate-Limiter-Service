@@ -15,12 +15,12 @@ public class RateLimiterService {
         String key = "rate_limiter:" + userId;
         Long reqCount = redisTemplate.opsForValue().increment(key);
         if (reqCount == 1) {
-            redisTemplate.expire(key, rlsConstants.DEFAULT_TIME_WINDOW_SECONDS, java.util.concurrent.TimeUnit.SECONDS);
+            redisTemplate.expire(key, rlsConstants.getWindowSeconds(), java.util.concurrent.TimeUnit.SECONDS);
         }
 
         System.out.println("User: " + userId + ", Request Count: " + reqCount);
 
-        return reqCount <= rlsConstants.DEFAULT_RATE_LIMIT;
+        return reqCount <= rlsConstants.getMaxRequests();
     }
 
 
