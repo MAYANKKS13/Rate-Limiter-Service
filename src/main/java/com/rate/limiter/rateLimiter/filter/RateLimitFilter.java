@@ -21,9 +21,11 @@ public class RateLimitFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String userId = httpRequest.getHeader("User-Id-1");
         if(userId == null) {
-            userId = "UNKNOWN_USER";
+            userId = httpRequest.getRemoteAddr();
         }
-        if (rateLimitService.isAllowed(userId)) {
+        String apiPath = httpRequest.getRequestURI();
+
+        if (rateLimitService.isAllowed(userId, apiPath)) {
             chain.doFilter(request, response);
         }
         else {
